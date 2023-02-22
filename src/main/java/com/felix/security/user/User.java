@@ -1,5 +1,6 @@
 package com.felix.security.user;
 
+import com.felix.security.budget.Budget;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +32,9 @@ public class User implements UserDetails {
 //    String will take value of enum
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToMany(mappedBy = "_user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Budget> budgets;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -48,6 +52,8 @@ public class User implements UserDetails {
         admin.setRole(Role.ADMIN);
         return admin;
     }
+
+
 
     @Override
     public String getPassword() {
