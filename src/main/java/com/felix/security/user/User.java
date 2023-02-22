@@ -9,7 +9,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.naming.Name;
 import java.util.Collection;
 import java.util.List;
 
@@ -37,6 +36,17 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        role is referring to the role above
         return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    public User createAdmin(String firstname, String lastname, String email, String password){
+        User admin = new User();
+
+        admin.setFirstname(firstname);
+        admin.setLastname(lastname);
+        admin.setEmail(email);
+        admin.setPassword(password);
+        admin.setRole(Role.ADMIN);
+        return admin;
     }
 
     @Override
