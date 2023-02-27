@@ -43,6 +43,13 @@ public class DemoController {
 //        return budgetRepo.findAllByUserId(userId);
 //    }
 
+    @PostMapping("/budget")
+    public Budget createBudget(@RequestBody Budget budget) {
+        return budgetRepo.save(budget);
+    }
+
+
+
     @PostMapping("/budgets")
     public Budget createBudget(@RequestBody Budget budget, @RequestParam(name = "userId") Integer userId) {
         if(userId == null){
