@@ -19,6 +19,10 @@ class BudgetService{
         return axiosInstance.get("/budget")
     }
 
+    postBudgetForm(data: any){
+        return axiosInstance.post("/budget", data)
+    }
+
     deleteBudget(id: number){
         return axiosInstance.delete(`/budget/${id}`)
     }

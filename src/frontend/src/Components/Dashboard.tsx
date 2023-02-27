@@ -1,4 +1,5 @@
 import React from "react";
+import SideBar from "./Sidebar";
 
 
 type DashboardProps = {
@@ -19,6 +20,7 @@ const Dashboard = (props: DashboardProps) => {
     return (
         <div>
             <div>
+               <SideBar/>
                 {budgets.map((budget: any, i: React.Key | null | undefined) => (
                     <div key={i}>
                         <h1>Car Payment: {budget.carPayment}</h1>
