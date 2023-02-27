@@ -13,5 +13,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 //     find user by email
     Optional<User> findByEmail(String email);
 
-    List<Budget> findAllBudgetsByUserId(Integer userId);
+
 }

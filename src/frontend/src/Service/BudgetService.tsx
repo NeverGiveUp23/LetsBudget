@@ -10,11 +10,19 @@ const axiosInstance = axios.create({
 
 
 class BudgetService{
+
     registerUser(data: any){
         return axiosInstance.post(`/v1/auth/register`, data)
     }
 
     getAllBudgets(){
-        return axiosInstance.get("/budgets")
+        return axiosInstance.get("/budget")
     }
+
+    deleteBudget(id: number){
+        return axiosInstance.delete(`/budget/${id}`)
+    }
+
 }
+
+export default new BudgetService();
