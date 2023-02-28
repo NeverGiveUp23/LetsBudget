@@ -53,9 +53,9 @@ const BudgetForm = (props: { toggleDrawer: any; anchor: any }) => {
 
 
 
-    function getStyles(months: string[], month: string[], theme: Theme) {
+    function getStyles(months: string[], month: string, theme: Theme) {
         return {
-            fontWeight: month.every((m) => months.indexOf(m) === -1)
+            fontWeight: months.indexOf(month) === -1
                     ? theme.typography.fontWeightRegular
                     : theme.typography.fontWeightMedium,
         };
@@ -167,14 +167,12 @@ const BudgetForm = (props: { toggleDrawer: any; anchor: any }) => {
                         labelId="demo-multiple-name-label"
                         id="demo-multiple-name"
                         multiple
-                        onKeyDown={
-                            onKeyDown
-                        }
+                        onKeyDown={onKeyDown }
                         MenuProps={MenuProps}
                         value={month}
                         onChange={handleChange}
                     >
-                        {[months].map((month, i) => (
+                        {months.map((month, i) => (
                             <MenuItem
                             key={i}
                             value={month}
